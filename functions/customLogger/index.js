@@ -1,11 +1,13 @@
 const winston = require('winston');
 const { Loggly } = require('winston-loggly-bulk');
+const dotenv = require('dotenv')
+dotenv.config();
 
 
 // Set up Winston logger with Loggly transport
 winston.add(
   new Loggly({
-    token: '70f496fc-d445-475e-9280-68f53e1d38fb',
+    token: process.env.CUSTOMLOGGER_TOKEN,
     subdomain: 'subdomain',
     tags: ['Node.js', 'ConsoleLogs'],
     json: true,
